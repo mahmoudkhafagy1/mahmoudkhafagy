@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap');
+
+html { scroll-behavior: smooth; }
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #020617; 
+}
+::-webkit-scrollbar-thumb {
+    background: #a855f7; 
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #c084fc; 
+}
+
+/* Digital Grid Background */
+.digital-grid {
+    background-image: 
+        linear-gradient(to right, rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* Glitch Effect */
+.glitch {
+    position: relative;
+    color: white;
+    font-weight: bold;
+}
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(10px, 9999px, 86px, 0); }
+    20% { clip: rect(62px, 9999px, 14px, 0); }
+    40% { clip: rect(31px, 9999px, 64px, 0); }
+    60% { clip: rect(89px, 9999px, 2px, 0); }
+    80% { clip: rect(2px, 9999px, 78px, 0); }
+    100% { clip: rect(56px, 9999px, 34px, 0); }
+}
+@keyframes glitch-anim2 {
+    0% { clip: rect(65px, 9999px, 100px, 0); }
+    20% { clip: rect(12px, 9999px, 55px, 0); }
+    40% { clip: rect(86px, 9999px, 23px, 0); }
+    60% { clip: rect(43px, 9999px, 88px, 0); }
+    80% { clip: rect(98px, 9999px, 11px, 0); }
+    100% { clip: rect(21px, 9999px, 77px, 0); }
+}
+
+/* Card Hover */
+.card-hover {
+    transition: all 0.3s ease;
+}
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.3);
+    border-color: rgba(168, 85, 247, 0.4);
+}
+
+/* Terminal Box */
+.terminal-box {
+    background: rgba(2, 6, 23, 0.8);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+/* Scanline Effect */
+.scanline {
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(168, 85, 247, 0.2) 51%,
+        transparent 51%
+    );
+    background-size: 100% 4px;
+    animation: scanline 10s linear infinite;
+}
+
+@keyframes scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100vh; }
+}
+
+/* Skill Badge */
+.skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: #cbd5e1;
+    transition: all 0.3s;
+}
+.skill-badge:hover {
+    border-color: rgba(168, 85, 247, 0.5);
+    background: rgba(168, 85, 247, 0.1);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Language Progress Bars */
+.progress-container {
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 9999px;
+    height: 0.75rem;
+    overflow: hidden;
+    position: relative;
+}
+.progress-bar {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Particle */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(168, 85, 247, 0.5);
+    pointer-events: none;
+    animation: float-up linear infinite;
+}
+@keyframes float-up {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+}
